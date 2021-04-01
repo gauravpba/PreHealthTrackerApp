@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="about" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class = "main-container">
+  <div class="content-container">
+<!--    if you wanted to a add a sidebar you would put it in content-container here not content area-->
+    <div class="content-area">
+<!--      two button groups were created here in order to add some space between the two buttons easily -->
+      <div class="btn-group">
+        <button mat-raised-button routerLink="/enter-info"> ADD ENTRY</button>
+      </div>
+      <div class = "btn-group">
+        <button mat-raised-button (click)="download()"> DOWNLOAD CSV </button>
+      </div>
+<!--      this is where the datatable is created it is implemented
+          using a 3rd party library from Clarity Design System
+          link to documentation : https://clarity.design/documentation -->
+      <clr-datagrid>
+        <clr-dg-column [clrDgField]="'events.activityCategory'"> Activity Category </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.activityType'"> Activity Type</clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.startDate'"> Start Date </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.endDate'"> End Date </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.hoursWorked'"> Hours Worked </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.organization'"> Organization </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.contactName'">  Contact Name </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.contactTitle'"> Contact Title </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.contactInfo'"> Contact Info </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.activitySummary'"> Activity Summary </clr-dg-column>
+        <clr-dg-column [clrDgField]="'events.skillsLearned'"> Skills Learned </clr-dg-column>
+        <clr-dg-placeholder>We couldn't find any entries!</clr-dg-placeholder>
+        <clr-dg-row *ngFor="let event of loadedPosts">
+          <clr-dg-cell>{{event.activityCategory}}</clr-dg-cell>
+          <clr-dg-cell>{{event.activityType}}</clr-dg-cell>
+          <clr-dg-cell>{{event.startDate}}</clr-dg-cell>
+          <clr-dg-cell>{{event.endDate}}</clr-dg-cell>
+          <clr-dg-cell>{{event.totalHoursWorked}}</clr-dg-cell>
+          <clr-dg-cell>{{event.organization}}</clr-dg-cell>
+          <clr-dg-cell>{{event.contactName}}</clr-dg-cell>
+          <clr-dg-cell>{{event.contactTitle}}</clr-dg-cell>
+          <clr-dg-cell>{{event.contactInfo}}</clr-dg-cell>
+          <clr-dg-cell>{{event.activitySummary}}</clr-dg-cell>
+          <clr-dg-cell>{{event.skillsLearned}}</clr-dg-cell>
+        </clr-dg-row>
+<!--        code that adds the ability to choose size of pages for table -->
+        <clr-dg-footer>
+          <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Entries per page</clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+          of {{pagination.totalItems}} entries
+        </clr-dg-pagination>
+        </clr-dg-footer>
+      </clr-datagrid>
+    </div>
+  </div>
+</div>
+<div>
+
+</div>
+</html>

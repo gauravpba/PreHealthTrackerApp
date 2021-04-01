@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="enter-info" content="width=device-width, initial-scale=1.0">
+  <title>Store Info</title>
+  <link rel="stylesheet" href="enter-info-page.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+<form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()" id="form">
+<div class="container">
+
+<!--  Activity category (clinical, research, volunteer, observation, other)-->
+  <div id="response">
+    <p>Activity category</p>
+    <mat-radio-group name="category" [(ngModel)]="activity" [(ngModel)]="userModel.activityCategory">
+      <mat-radio-button value="clinical" color="warn">Clinical</mat-radio-button> <br>
+      <mat-radio-button value="research" color="warn">Research</mat-radio-button> <br>
+      <mat-radio-button value="volunteer" color="warn">Volunteer</mat-radio-button> <br>
+      <mat-radio-button value="observation" color="warn">Observation</mat-radio-button> <br>
+      <mat-radio-button [value]="activityOther" color="warn">
+        <mat-form-field>
+          <input matInput name="otheractivity" [(ngModel)]="activityOther" />
+        </mat-form-field>
+      </mat-radio-button>
+    </mat-radio-group>
+<!--    <p>You selected {{ activity }}</p>-->
+  </div>
+<!--  if other is selected, add a text box-->
+  <br>
+
+<!--  Activity type (paid, volunteer, academic credit, other)-->
+  <div id="response">
+    <p>Activity type</p>
+    <mat-radio-group name="type" [(ngModel)]="userModel.activityType" [(ngModel)]="type">
+      <mat-radio-button value="paid" color="warn">Paid</mat-radio-button> <br>
+      <mat-radio-button value="volunteer" color="warn">Volunteer</mat-radio-button> <br>
+      <mat-radio-button value="academic-credit" color="warn">Academic Credit</mat-radio-button> <br>
+      <mat-radio-button [value]="typeOther" color="warn">
+        <mat-form-field>
+          <input matInput name ="typeother" [(ngModel)]="typeOther" />
+        </mat-form-field>
+      </mat-radio-button>
+    </mat-radio-group>
+<!--    <p>You selected {{ type }}</p>-->
+  </div>
+
+  <br>
+
+<!--  Dates (start-end)-->
+  <div id="response">
+    <p>Select dates</p>
+    <mat-form-field>
+      <mat-label>Start date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="userModel.startDate" [(ngModel)]="startDate" name="startdate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+<!--    <p>{{ startDate }}</p>-->
+    <br>
+    <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="userModel.endDate" [(ngModel)]="endDate" name="enddate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+<!--    <p>{{endDate}}</p>-->
+  </div>
+<br>
+
+  <!--  Average # hours/week-->
+  <div id="response">
+    <p>Average hours/week</p>
+    <mat-form-field>
+      <mat-label>Enter hours</mat-label>
+      <input matInput type="number" placeholder="Ex. 1" [(ngModel)]="avgHours" [(ngModel)]="userModel.averageHoursWorked" name="avghours">
+      <span matSuffix>hrs</span>
+    </mat-form-field>
+<!--    <p>avgHours: {{ avgHours }}</p>-->
+  </div>
+  <br>
+
+
+<!--  Total number of hours-->
+  <div id="response">
+    <p>Total number of hours</p>
+    <mat-form-field>
+      <mat-label>Enter hours</mat-label>
+      <input matInput type="number" placeholder="Ex. 1" [(ngModel)]="totalHours" [(ngModel)]="userModel.totalHoursWorked" name="tothours">
+      <span matSuffix>hrs</span>
+    </mat-form-field>
+<!--    <p>totalHours: {{ totalHours }}</p>-->
+  </div>
+  <br>
+
+<!--  Organization/department-->
+  <div id="response">
+    <p>Organization/department</p>
+    <mat-form-field>
+      <mat-label>Enter organization</mat-label>
+      <input matInput name ="oragiz" [(ngModel)]="userModel.organization" [(ngModel)]="department"/>
+    </mat-form-field>
+<!--    <p>department: {{ department }}</p>-->
+  </div>
+<br>
+<!--  Contact name, title, contact info-->
+  <div id="response">
+    <p>Contact name, title, contact info</p>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput name="nam" [(ngModel)]="name" [(ngModel)]="userModel.contactName">
+    </mat-form-field>
+<!--    <p>name: {{ name }}</p>-->
+    <br>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput name="d" [(ngModel)]="title" [(ngModel)]="userModel.contactTitle">
+    </mat-form-field>
+<!--    <p>title: {{ title }}</p>-->
+    <br>
+    <mat-form-field>
+      <mat-label>Contact info</mat-label>
+      <input matInput name="e" [(ngModel)]="contactInfo" [(ngModel)]="userModel.contactInfo">
+    </mat-form-field>
+<!--    <p>contactInfo: {{ contactInfo }}</p>-->
+  </div>
+  <br>
+
+<!--  Activity summary (700 characters)-->
+  <div id="response">
+    <p>Activity summary (700 characters)</p>
+    <mat-form-field id="textbox">
+<!--      <mat-label>Activity summary (700 characters)</mat-label>-->
+      <textarea matInput rows="10" name="f" [(ngModel)]="userModel.activitySummary" [(ngModel)]="activitySummary"></textarea>
+    </mat-form-field>
+<!--    <p>activitySummary: {{ activitySummary }}</p>-->
+  </div>
+  <br>
+
+<!--  Skills/competencies learned/demonstrated-->
+  <div id="response">
+    <p>Skills/competencies learned/demonstrated</p>
+    <mat-form-field id="textbox">
+      <textarea matInput rows="10" name="g" [(ngModel)]="skillsLearned" [(ngModel)]="userModel.skillsLearned"></textarea>
+    </mat-form-field>
+<!--    <p>skillsLearned: {{ skillsLearned }}</p>-->
+  </div>
+  <button mat-raised-button type="submit">Submit</button>
+</div>
+</form>
+
+</body>
+<!--{{ userModel | json }}-->
+</html>

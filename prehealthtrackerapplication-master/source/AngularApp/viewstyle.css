@@ -1,0 +1,18 @@
+.main{
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #d7d7d7;
+    margin-top: 20px;
+    font-family: sans-serif;
+}
+
+
+
+ul{
+    list-style: none;
+    font-size: 20px;
+    color: #686868;
+    margin-left: -40px;
+    margin-bottom: 0px;
+}

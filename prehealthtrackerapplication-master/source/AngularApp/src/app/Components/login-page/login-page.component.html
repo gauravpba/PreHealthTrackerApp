@@ -1,0 +1,27 @@
+
+<body>
+<div class="login-box">
+  <h1 id="log-in-text">LogIn</h1>
+  <form class="login-forms" #userForm="ngForm" novalidate (ngSubmit)="onSubmit()" id="logInForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="usrname" name="usernameBox">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="passwrd" name="passowordBox">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br>
+    <mat-card-actions align="center">
+      <button mat-raised-button type="submit">Login</button>
+    </mat-card-actions>
+  </form>
+    <br>
+    <a routerLink="/register-page">Create Account</a>
+  </div>
+
+</body>
+
